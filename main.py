@@ -34,20 +34,28 @@ def occurrences_counter(dataset):
 
 
 def difference_de_un(str1, str2):
+    # variable résultat instanciée en str vide
     result = ""
+    # recherche des caractères de différence en deux boites
     for i in range(len(str1)):
         if str1[i] != str2[i]:
+            # si result est différent d'un str vide alors on recommence l'opération
             if result != "":
                 return ""
+            # si result est vide alors je renvoie la partie similaire des deux boxes avant le caractère de différence
+            # concaténé avec la partie similaire des deux boites après le caractère de différence à la variable result
             result = str1[:i] + str1[i+1:]
     return result
 
 
 def assembleur(dataset):
+    # j'instancie deux itérables à partir du même dataset pour pouvoir les comparer
     for boxes in dataset:
         for boxes2 in dataset:
+            # si les deux ids de boite sont pareils continuer
             if boxes2 == boxes:
                continue
+            # si les deux itérations sont différentes, utilisation de la fonction "difference_de_un"
             result = difference_de_un(boxes, boxes2)
             if result != "":
                 return result
