@@ -33,7 +33,30 @@ def occurrences_counter(dataset):
     return three_count * two_count
 
 
+def difference_de_un(str1, str2):
+    result = ""
+    for i in range(len(str1)):
+        if str1[i] != str2[i]:
+            if result != "":
+                return ""
+            result = str1[:i] + str1[i+1:]
+    return result
+
+
+def assembleur(dataset):
+    for boxes in dataset:
+        for boxes2 in dataset:
+            if boxes2 == boxes:
+               continue
+            result = difference_de_un(boxes, boxes2)
+            if result != "":
+                return result
+    return ""
+
+
 # charger les données du json dans une liste
 df_boxes = input_list_transformer(data)
+reste_lettres = assembleur(data)
 print("checksum :", occurrences_counter(df_boxes))
+print(reste_lettres)
 
