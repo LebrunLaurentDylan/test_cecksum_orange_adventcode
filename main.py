@@ -58,5 +58,4 @@ def assembleur(dataset):
 df_boxes = input_list_transformer(data)
 reste_lettres = assembleur(data)
 print("checksum :", occurrences_counter(df_boxes))
-print(reste_lettres)
-
+print("lettres communes entre les deux boites :", reste_lettres)
